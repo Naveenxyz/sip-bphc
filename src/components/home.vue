@@ -1,34 +1,34 @@
 <template>
   <div class="body">
-    <div class="top-nav elevation-1">
-      <i class='bx menu-toggle' :class="{ 'bx-x': sidebarStatus, 'bx-menu-alt-left': !sidebarStatus }" @click.prevent="toggleSidebar"></i>
+    <navBar />
+    <div class="lSidebar" ref="sidebar">
+      <div class="pages"></div>
+      <div class="groups"></div>
     </div>
-    <div class="sidebar elevation-10" ref="sidebar">
+    <div class="main">
+      <div class="userPost">
+        <div class="userPostImg"></div>
+        <div class="userPostInput"></div>
+      </div>
+    </div>
 
-    </div>
-    <div class="side-menu elevation-3">
-
-    </div>
+    <div class="rSidebar"></div>
   </div>
 </template>
 
 <script>
+import navBar from './navBar'
 export default {
   name: 'Home',
+  components: {
+    navBar
+  },
   data () {
     return {
-      sidebarStatus: true,
+      navSearch: ''
     }
   },
   methods : {
-    toggleSidebar () {
-      this.sidebarStatus = !this.sidebarStatus
-      if ( this.sidebarStatus ) {
-        this.$refs.sidebar.style.width = '20vw'
-      } else if ( !this.sidebarStatus ) {
-        this.$refs.sidebar.style.width = '0px'
-      }
-    }
   }
 }
 </script>
@@ -37,49 +37,82 @@ export default {
 <style scoped>
   .top-nav {
     position: fixed;
-    background:#E5416D;
+    background:#2c395e;
     top: 0px;
     left: 0px;
     height: 8%;
     width: 100%;
     z-index: 9;
+    display: flex;
+    align-items: center;
+    text-align: center;
   }
 
-  .menu-toggle {
+  .lSidebar {
     position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    left: 2vw;
-    font-size: 2.2rem;
-    cursor: pointer;
-    color: white;
-    transition: 100ms linear;
-  }
-
-  .menu-toggle:hover {
-    color: #efefef;
-  }
-
-  .sidebar {
-    position: absolute;
-    background: #444;
-    top: 0%;
+    background: #EEEFF7;
+    top: 8%;
     left: 0px;
     width: 20vw;
-    height: 100%;
+    height: 92%;
     z-index: 8;
     transition: 250ms linear;
+    text-align: center;
   }
 
-  .side-menu {
+  .main {
     position: absolute;
-    background: #444;
-    top: 0%;
-    right: 0px;
-    width: 20%;
-    height: 100%;
-    z-index: 2;
-    transition: 250ms linear;
+    left: 20vw;
+    top: 8vh;
+    width: 55vw;
+    min-height: 92%;
+    overflow: auto;
+    background: #EEEFF7;
   }
+
+  ::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+  }
+
+  .rSidebar {
+    position: absolute;
+    background: #EEEFF7;
+    top: 8%;
+    right: 0px;
+    width: 25vw;
+    height: 92%;
+    z-index: 8;
+    transition: 250ms linear;
+    text-align: center;
+  }
+
+  .navSerachInput {
+    all: unset;
+    width: 70%; 
+    margin-left: 10%;
+    background: #EEEFF7;
+    z-index: 999;
+    color: #2c395e;
+    height: 4vh;
+    border-radius: 2px;
+  }
+
+  .navSearchBtn {
+    all: unset;
+    width: 10%;
+    color: rgb(10, 12, 75);
+    background: orange;
+    height: 4vh;
+    border-radius: 2px;
+    transform: translateY(3px);
+    cursor: pointer;
+  }
+
+  .navIcon {
+    color: #EEEFF7;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
 </style>
