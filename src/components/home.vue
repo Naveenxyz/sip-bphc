@@ -6,10 +6,7 @@
       <div class="groups"></div>
     </div>
     <div class="main">
-      <div class="userPost">
-        <div class="userPostImg"></div>
-        <div class="userPostInput"></div>
-      </div>
+      <post />
     </div>
 
     <div class="rSidebar"></div>
@@ -18,10 +15,12 @@
 
 <script>
 import navBar from './navBar'
+import post from './post'
 export default {
   name: 'Home',
   components: {
-    navBar
+    navBar,
+    post
   },
   data () {
     return {
