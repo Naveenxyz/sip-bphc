@@ -5,15 +5,11 @@
                 <h1 class="heading"> LOGIN FOR THE SERVICES</h1>
                 <input type="email" placeholder="EMAIL" class="email"> <br>
                 <input type="password" placeholder="PASSWORD" class="password"> <br>
-                    <div class="login-btn">
-                        <button class="btn btn-login">Login</button>
-                    </div>
-                    
-                    <a href="#" class="link">Create a Account</a>
-                            
+                <div class="login-btn">
+                    <button class="btn btn-login">Login</button>
                 </div>
-            
-
+                <a href="#" class="link">Create a Account</a>      
+            </div>
             <div class="side-screen">
                 <h1>SIP BPHC</h1>	
             </div>
@@ -76,6 +72,7 @@ input {
 }
 
 .side-screen{
+    
 	font-size: 4em;
 	flex: 1;
 	height: 100vh;
@@ -88,8 +85,8 @@ input {
 .side-screen h1 {
 	height: 30vh;
 	transform: translateY(47.5vh);
-	color: white;
-	font-size: 3rem;
+	color: orange;
+	font-size: 4rem;
 	padding: 0px;
 	margin: 0px;
 }
@@ -125,10 +122,12 @@ input {
 } */
 
 .btn {
-	all: unset;
+    all: unset;
+    color:black;
 	height: 6%;
 	width: 12%;
-	background: #444;
+	background:  orange;;
+	//background: orange; 
 	border-radius: 50px;
 	position: relative;
     align-content: center;
@@ -153,8 +152,8 @@ input {
 }
 
 .btn:hover{
-	color: white;
-	background: #666;
+	color: black;
+	background:  #2c395e;
 	cursor: pointer;
 }
 .link {
@@ -166,15 +165,32 @@ input {
 	top:50vh;
 	left: 0%;
 	width: 35%;
-	align-content: center;
-	
+    align-content: center;
 	text-align: center;
-	}
+    }
+    
+    .link::after{
+        position: absolute;
+        content: '';
+        height: 4px;
+        margin: 30px auto;
+        left: 0;
+        right: 0;
+        width: 50%;
+        background: #008000;
+        transition: 0.5s;
+    }
 
 .link:hover{
-	color: deeppink;
+	color: orange;
 	cursor: pointer;
 	
+}
+
+.link:hover:after {
+  left: -5%;
+  width: 110%;
+  background: orange;
 }
 
 </style>
