@@ -18,11 +18,11 @@
                 Electronics and Communication Engineering <br>
                 Born June 15 1999 -->
                 <h2>Naveen kumar Battula</h2><br>
-                <i class="bx bx-id-card boxes"></i> @naveenkb1999<br>
-                <i class="bx bx-contact boxes"></i>naveenkb1999@gmail.com<br>
-                <i class="bx bx-calendar boxes"></i> June 15 1999<br>
-                Electronis and Communication Engineering<br>
-                BITS Pilani Hyderabad Campus
+                <i class="bx bx-id-card boxes" style="margin-right: 30px;"></i> @naveenkb1999<br>
+                <i class="bx bx-contact boxes" style="margin-right: 30px;"></i> naveenkb1999@gmail.com<br>
+                <i class="bx bx-calendar boxes" style="margin-right: 30px;"></i> June 15 1999<br> <br>
+                <p>Electronis and Communication Engineering<br>
+                BITS Pilani Hyderabad Campus </p>
                 
             </div>
             <div class="changable" style="flex: 8;">

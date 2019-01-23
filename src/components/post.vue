@@ -1,5 +1,5 @@
 <template>
-    <div class="userPost" v-click-outside="outside">
+    <div class="userPost" v-click-outside="outside" ref="postBody"  style="text-align:center;">
         <div class="postHeader">
             <img class="userPostImg" src="" alt="">
             <p>Create A post</p>
@@ -8,7 +8,7 @@
             <textarea name="post" @click="showForumSelection" placeholder="Write Your Post Here" class="userPostInput"></textarea>
         </div>
         <div class="forumSelection" ref="showForumSelection">
-            <div class="forumSelectioninputCont" style="display: flex;margin: 20px;">
+            <div class="forumSelectioninputCont" style="display: flex;margin: 20px;text-align: left;">
                 <div style="flex:1"></div>
                 <div style="flex: 2;">
                     <label class="inputCont">One
@@ -46,16 +46,18 @@
                         <span class="checkmark"></span>
                     </label>
                 </div>
-                <div style="flex: 1;"></div>
+
             </div>
         </div>
-        <div class="tags">
-            <button class="tagBtn">Some Name</button>
-            <button class="tagBtn">Some Name</button>
-            <button class="tagBtn">Some Name</button>
-            <button class="tagBtn">Some Name</button>
+        <div class="tags" style="display: flex;">
+            <div style="flex: 1"></div>
+            <button class="tagBtn" style="flex:3 ;"> <i class="bx bx-code tagIcons" style=""></i> Code</button>
+            <button class="tagBtn" style="flex:3 ;"> <i class="bx bx-image-alt tagIcons"></i> Image</button>
+            <button class="tagBtn" style="flex:3 ;"> <i class="bx bx-video tagIcons"></i> Video</button>
+            <button class="tagBtn" style="flex:3 ;"> <i class="bx bx-file-blank tagIcons"></i> File</button>
+            <div style="flex: 1"></div>
         </div>
-        <button class="submitBtn">Submit</button>
+        <button ref="postSubmitBtn" class="postSubmitBtn">Submit</button>
     </div>
 </template>
 
@@ -67,6 +69,8 @@
         margin-bottom: 5vh;
         height: auto;
         background: #2c395e;
+        border-radius: 5px;
+        transition: 0.2s;
     }
     .postHeader{
         display: flex;
@@ -89,7 +93,7 @@
         height: auto;
         width: 100%;
         background: #EEEFF7;
-        border: 0.5px dashed #2c395e;
+        border: 0.5px solid #aaaaaa;
         z-index: 1;
         display: flex;
     }
@@ -110,6 +114,7 @@
         flex: 9;
         height: 15vh;
         text-decoration: none;
+        resize: none;
     }
 
     input:focus, textarea:focus {
@@ -120,7 +125,7 @@
         display: block;
         position: relative;
         margin: 20px;
-        padding-left: 30px;
+        padding-left:30px;
         cursor: pointer;
         font-size: 15px;
         -webkit-user-select: none;
@@ -184,6 +189,49 @@
         background: #2c395e;
     }
 
+    .tagBtn {
+        all: unset;
+        text-align: center;
+        background: #eeeeee;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 10px;
+        border-radius: 100px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+    .tagBtn:hover {
+        background: #cccccc;
+    }
+
+    .tagIcons {
+        margin-right: 20px;
+        transform: scale(1.5, 1.5) translateY(0.5px);
+        color: darkOrange;
+        font-weight: 900;
+    }
+
+    .postSubmitBtn {
+        all: unset;
+        color: #2c395e;
+        background: orange;
+        border-radius: 5px;
+        width: 20%;
+        margin-top: 60px;
+        margin-left:40% ;
+        transform: translateY(-30px);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 15px;
+        font-family: Montserrat;
+        display: none;
+    }
+
 </style>
 
 <script>
@@ -199,12 +247,25 @@ export default {
             ++this.textClickCounter
             if ( this.textClickCounter % 2  == 0) {
                 this.$refs.showForumSelection.style.display = 'none'
+                this.$refs.postSubmitBtn.style.display = 'none'
+                this.$refs.postBody.classList.remove('elevation-24')
+                this.$refs.postBody.style.width = '80%'
+                this.$refs.postBody.style.marginLeft = '10%'
             } else {
                 this.$refs.showForumSelection.style.display = 'block'
+                this.$refs.postSubmitBtn.style.display = 'block'
+                this.$refs.postBody.classList.add('elevation-24')
+                this.$refs.postBody.style.width = '90%'
+                this.$refs.postBody.style.marginLeft = '5%'
             }
         },
         outside () {
             this.$refs.showForumSelection.style.display = 'none'
+            this.$refs.postSubmitBtn.style.display = 'none'
+            this.textClickCounter = 0
+            this.$refs.postBody.classList.remove('elevation-24')
+            this.$refs.postBody.style.width = '80%'
+            this.$refs.postBody.style.marginLeft = '10%'
         }
     },
     directives: {

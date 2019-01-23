@@ -1,12 +1,12 @@
 <template>
     <div class="top-nav elevation-1">
-      <p class="logo" style="flex: 2;color: white;font-family: Montserrat;align-content: center;font-size: 1.6rem;text-align: center;margin-top: 15px;font-weight: 500;word-spacing: 10px;letter-spacing: 1px;"> Social Net </p>
+      <p class="logo" @click="$router.push('home')" style="flex: 2;color: white; cursor: pointer;font-family: Montserrat;align-content: center;font-size: 1.6rem;text-align: center;margin-top: 15px;font-weight: 500;word-spacing: 10px;letter-spacing: 1px;"> Social Net </p>
       <div class="searchBar" style="flex: 4;">
         <input type="text" name="search" class="navSerachInput" placeholder="Search" v-model="navSearch">
         <button class="navSearchBtn"><i class="bx bx-search-alt navSearchIcon" style="font-size: 1.5rem;"></i></button>
       </div>
       <div style="flex: 3"></div>
-      <i class="bx bx-user-circle navIcon" style="flex: 1"></i>
+      <i class="bx bx-user-circle navIcon" @click="$router.push('profile')" style="flex: 1"></i>
       <i class="bx bx-message-detail navIcon" style="flex: 1"></i>
       <i class="bx bx-code navIcon" style="flex: 1"></i>
       <i class="bx bx-horizontal-center navIcon" style="flex: 1"></i>

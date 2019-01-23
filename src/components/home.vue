@@ -2,14 +2,35 @@
   <div class="body">
     <navBar />
     <div class="lSidebar" ref="sidebar">
-      <div class="pages"></div>
-      <div class="groups"></div>
+      <div class="forums">
+        <span style=""><h2> Forums <i class="bx bx-chevron-down" style="transform: scale(1.5, 1.5) translateX(10px);cursor: pointer;"></i> </h2>  </span>
+      </div>
+      <div class="groups">
+        <span><h2> Groups <i class="bx bx-chevron-down"  style="transform: scale(1.5, 1.5) translateX(10px);cursor: pointer;"></i> </h2></span>
+      </div>
+      <div class="people">
+        <span><h2> People <i class="bx bx-chevron-down"  style="transform: scale(1.5, 1.5) translateX(10px);cursor: pointer;"></i> </h2></span>
+      </div>
     </div>
     <div class="main">
       <post />
+      <div class="fCard elevation-1">
+        <div class="fCardHeader"></div>
+      </div>
     </div>
 
-    <div class="rSidebar"></div>
+    <div class="rSidebar">
+      <div class="card elevation-5">
+        <h2 class="cardHeader">Hackathon</h2>
+        <p class="cardBody"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? </p>
+        <button class="cardBtn elevation-3"> Visit The Contest </button>
+      </div>
+      <div class="card elevation-5">
+        <h2 class="cardHeader">Hackathon  2</h2>
+        <p class="cardBody"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? </p>
+        <button class="cardBtn elevation-3"> Visit The Contest </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -49,8 +70,8 @@ export default {
 
   .lSidebar {
     position: absolute;
-    background: #EEEFF7;
-    top: 8%;
+    background: #dddddd;
+    top: 10%;
     left: 0px;
     width: 20vw;
     height: 92%;
@@ -77,7 +98,7 @@ export default {
   .rSidebar {
     position: absolute;
     background: #EEEFF7;
-    top: 8%;
+    top: 10%;
     right: 0px;
     width: 25vw;
     height: 92%;
@@ -112,6 +133,86 @@ export default {
     color: #EEEFF7;
     font-size: 1.5rem;
     cursor: pointer;
+  }
+
+  .card {
+    width: 80%;
+    margin-left: 10%;
+    min-height: 20vh;
+    margin: 20px;
+    background: whitesmoke;
+    border-radius: 5px;
+    text-align: left;
+  }
+
+  .cardHeader {
+    padding: 30px;
+    color: #2c395e;
+  }
+
+  .cardBody {
+    padding: 30px;
+  }
+
+  .cardBtn {
+    padding: 15px 40px 15px 40px;
+    margin-left: 30px;
+    background: #2c395e;
+    color: white;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  .forums {
+    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+
+  .forums span h2{
+    padding: 20px;
+    color: #2c395e;
+  }
+
+  .groups {
+    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+
+  .groups span  h2{
+    padding: 20px;
+    color: #2c395e;
+  }
+
+  .people {
+    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+
+  .people span  h2{
+    padding: 20px;
+    color: #2c395e;
+  }
+
+  .fCard {
+    width: 80%;
+    margin-left: 10%;
+    min-height: 40vh;
+    background: whitesmoke;
+    border-radius: 5px;
+    text-align: left;
+  }
+
+  .fCardHeader {
+    background: #2c395e;
+    height: 8vh;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
 
 </style>
