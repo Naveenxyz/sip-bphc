@@ -14,8 +14,33 @@
     </div>
     <div class="main">
       <post />
-      <div class="fCard elevation-1">
-        <div class="fCardHeader"></div>
+      <div class="fCard elevation-1" :key="sPost.Id in posts" v-for="sPost in posts">
+        <div class="fCardHeader">
+          <p class="fCardHeaderTitle">postedBy <strong style="margin-left: 20px;">{{sPost.postedBy}}</strong> </p>
+          <p class="fCardHeaderSub">{{sPost.subForum}}</p>
+        </div>
+        <div class="fCardBody">
+          <p class="fCardBodyText">{{sPost.bodyText}}</p>
+        </div>
+        <div class="fCardFooter">
+          <div class="fCardFooterUpvotes" style="flex: 1;">
+            <span style="text-align: center;">
+              <i class="material-icons" style="color: white;float: left;margin-left: 30px;font-size: 20px;transform: translateY(3px);">thumb_up</i>
+              <p style="float: left;margin-left: 15px;color: white;transform: translateY(5px);">100 <small>upvotes</small></p>
+            </span>
+          </div>
+          <div class="fCardFooterDownvotes" style="flex: 1;">
+            <span style="text-align: center;">
+              <i class="material-icons" style="color: white;float: left;margin-left: 30px;font-size: 20px;transform: translateY(3px);">thumb_down</i>
+              <p style="float: left;margin-left: 15px;color: white;transform: translateY(5px);">100 <small>downvotes</small></p>
+            </span>
+          </div>
+          <div style="flex: 1;"></div>
+          <div class="fCardFooterComment" style="flex: 1;">
+
+          </div>
+        </div>
+        <div class="fcardComment"></div>
       </div>
     </div>
 
@@ -37,6 +62,7 @@
 <script>
 import navBar from './navBar'
 import post from './post'
+import * as firebase from 'firebase'
 export default {
   name: 'Home',
   components: {
@@ -45,33 +71,50 @@ export default {
   },
   data () {
     return {
-      navSearch: ''
+      navSearch: '',
+      posts: [
+        {
+          postedBy: 'vamsi',
+          Id: 'asd',
+          subForum: 'SubForum',
+          upvotes: '100',
+          downvotes: '100',
+          bodyText: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio?',
+          bodyImg: ''
+        },
+        {
+          postedBy: 'vamsi',
+          Id: 'asdasd',
+          subForum: 'SubForum 2',
+          upvotes: '101',
+          downvotes: '101',
+          bodyText: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio?',
+          bodyImg: ''
+        }
+      ]
     }
   },
   methods : {
+  },
+  beforeCreate () {
+    var vm = this
+    firebase.auth().onAuthStateChanged(user => {
+      if (!user) {
+        vm.$router.push('login')
+      } else {
+        console.log('Auth Checked')
+      }
+    })
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .top-nav {
-    position: fixed;
-    background:#2c395e;
-    top: 0px;
-    left: 0px;
-    height: 8%;
-    width: 100%;
-    z-index: 9;
-    display: flex;
-    align-items: center;
-    text-align: center;
-  }
-
   .lSidebar {
     position: absolute;
-    background: #dddddd;
-    top: 10%;
+    background: #eeeeee;
+    top: 8%;
     left: 0px;
     width: 20vw;
     height: 92%;
@@ -87,7 +130,6 @@ export default {
     width: 55vw;
     min-height: 92%;
     overflow: auto;
-    background: #EEEFF7;
   }
 
   ::-webkit-scrollbar {
@@ -97,8 +139,7 @@ export default {
 
   .rSidebar {
     position: absolute;
-    background: #EEEFF7;
-    top: 10%;
+    top: 8%;
     right: 0px;
     width: 25vw;
     height: 92%;
@@ -157,8 +198,9 @@ export default {
   .cardBtn {
     padding: 15px 40px 15px 40px;
     margin-left: 30px;
-    background: #2c395e;
-    color: white;
+    background: orange;
+    color: #444444;
+    font-weight: 900;
     margin-bottom: 20px;
     border-radius: 5px;
     font-size: 12px;
@@ -202,7 +244,9 @@ export default {
   .fCard {
     width: 80%;
     margin-left: 10%;
-    min-height: 40vh;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    min-height: 20vh;
     background: whitesmoke;
     border-radius: 5px;
     text-align: left;
@@ -210,9 +254,46 @@ export default {
 
   .fCardHeader {
     background: #2c395e;
-    height: 8vh;
+    height: 6vh;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fCardHeader p{
+    flex: 1;
+    color: white;
+    font-size: 15px;
+    padding-left: 30px;
+    max-width: 50%;
+    transform: translateY(5px);
+  }
+  .fCardHeaderSub {
+    text-align: right;
+    padding-right: 30px;
   }
 
+  .fCardBody {
+    width: calc(100% - 20px);
+    margin: 10px;
+   /* background: #ddd; */
+    min-height: calc(8vh - 20px);
+  }
+
+  .fCardFooter {
+    background: #2c395e;
+    height: 6vh;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fCardBodyText {
+    padding: 30px;
+    text-align: left;
+    color: #2c395e;
+    font-size: 14px;
+  }
 </style>

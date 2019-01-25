@@ -3,6 +3,7 @@
         <div class="postHeader">
             <img class="userPostImg" src="" alt="">
             <p>Create A post</p>
+            <i class="material-icons closeIcon" @click="outside" ref="closeIcon" style="float: right;transform: translateY(10px);margin-right: 20px;" >clear</i>
         </div>
         <div class="postBody">
             <textarea name="post" @click="showForumSelection" placeholder="Write Your Post Here" class="userPostInput"></textarea>
@@ -59,6 +60,7 @@
         </div>
         <button ref="postSubmitBtn" class="postSubmitBtn">Submit</button>
     </div>
+ 
 </template>
 
 <style scoped>
@@ -104,7 +106,7 @@
         clip-path: circle(30.0% at 50% 50%);
     }
     .userPostInput{
-        background: #EEEFF7;
+        background: whitesmoke;
         color: #2c395e;
         text-align: center;
         line-height: 20px;
@@ -204,7 +206,8 @@
         margin-bottom: 20px;
     }
     .tagBtn:hover {
-        background: #cccccc;
+        transform: translateY(-1px) scale(1.1, 1.1);
+        transition: 0.1s;
     }
 
     .tagIcons {
@@ -232,6 +235,12 @@
         display: none;
     }
 
+    .closeIcon {
+        color: #EEEFF7;
+        display: none;
+        cursor: pointer;
+    }
+
 </style>
 
 <script>
@@ -246,17 +255,24 @@ export default {
         showForumSelection () {
             ++this.textClickCounter
             if ( this.textClickCounter % 2  == 0) {
-                this.$refs.showForumSelection.style.display = 'none'
+               /* this.$refs.showForumSelection.style.display = 'none'
                 this.$refs.postSubmitBtn.style.display = 'none'
                 this.$refs.postBody.classList.remove('elevation-24')
                 this.$refs.postBody.style.width = '80%'
-                this.$refs.postBody.style.marginLeft = '10%'
+                this.$refs.postBody.style.marginLeft = '10%' */
+                this.$refs.showForumSelection.style.display = 'block'
+                this.$refs.postSubmitBtn.style.display = 'block'
+                this.$refs.postBody.classList.add('elevation-24')
+                this.$refs.postBody.style.width = '90%'
+                this.$refs.postBody.style.marginLeft = '5%'
+                this.$refs.closeIcon.style.display = 'block'
             } else {
                 this.$refs.showForumSelection.style.display = 'block'
                 this.$refs.postSubmitBtn.style.display = 'block'
                 this.$refs.postBody.classList.add('elevation-24')
                 this.$refs.postBody.style.width = '90%'
                 this.$refs.postBody.style.marginLeft = '5%'
+                this.$refs.closeIcon.style.display = 'block'
             }
         },
         outside () {
@@ -266,6 +282,7 @@ export default {
             this.$refs.postBody.classList.remove('elevation-24')
             this.$refs.postBody.style.width = '80%'
             this.$refs.postBody.style.marginLeft = '10%'
+            this.$refs.closeIcon.style.display = 'none'
         }
     },
     directives: {

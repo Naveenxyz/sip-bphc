@@ -6,22 +6,34 @@
         <button class="navSearchBtn"><i class="bx bx-search-alt navSearchIcon" style="font-size: 1.5rem;"></i></button>
       </div>
       <div style="flex: 3"></div>
-      <i class="bx bx-user-circle navIcon" @click="$router.push('profile')" style="flex: 1"></i>
-      <i class="bx bx-message-detail navIcon" style="flex: 1"></i>
-      <i class="bx bx-code navIcon" style="flex: 1"></i>
-      <i class="bx bx-horizontal-center navIcon" style="flex: 1"></i>
+      <i class="material-icons navIcon" @click="$router.push('profile')" style="flex: 1">person</i>
+      <i class="bx bx-message-detail navIcon" @click="$router.push('messages')" style="flex: 1"></i>
+      <i class="bx bx-code navIcon" @click="$router.push('code')" style="flex: 1"></i>
+      <i class="bx bx-horizontal-center navIcon" @click="$router.push('collab')" style="flex: 1"></i>
+      <i class="material-icons navIcon" @click="$router.push('showcase')" style="flex: 1">collections</i>
+      <i class="material-icons navIcon" @click="logout" style="flex: 1">power_settings_new</i>
     </div>
 </template>
 
 <script>
+import * as firebase from 'firebase'
 export default {
   name: 'header',
   data () {
     return {
-        navSearch: ''
+      navSearch: ''
     }
   },
   methods : {
+    logout () {
+      var vm = this
+      firebase.auth().signOut().then(
+        resp => {
+          alert('SignOut Succesful')
+          vm.$router.push('login')
+        }
+      )
+    }
   }
 }
 </script>
@@ -38,6 +50,7 @@ export default {
     display: flex;
     align-items: center;
     text-align: center;
+    margin: 0px;
   }
 
   ::-webkit-scrollbar {

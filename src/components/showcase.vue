@@ -1,5 +1,5 @@
 <template>
-    
+    <p>ShowCase Page</p>
 </template>
 
 <script>
