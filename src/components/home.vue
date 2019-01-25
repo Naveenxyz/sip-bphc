@@ -44,18 +44,19 @@
       </div>
     </div>
 
-    <div class="rSidebar">
-      <div class="card elevation-5">
+    <div class="rSidebarP">
+      <div class="card">
         <h2 class="cardHeader">Hackathon</h2>
         <p class="cardBody"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? </p>
         <button class="cardBtn elevation-3"> Visit The Contest </button>
       </div>
-      <div class="card elevation-5">
+      <div class="card">
         <h2 class="cardHeader">Hackathon  2</h2>
         <p class="cardBody"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? </p>
         <button class="cardBtn elevation-3"> Visit The Contest </button>
       </div>
     </div>
+    <div class="rSidebarS"></div>
   </div>
 </template>
 
@@ -112,11 +113,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .lSidebar {
-    position: absolute;
-    background: #eeeeee;
+    position: fixed;
+    background: orange;
     top: 8%;
     left: 0px;
-    width: 20vw;
+    width: 15vw;
     height: 92%;
     z-index: 8;
     transition: 250ms linear;
@@ -125,9 +126,9 @@ export default {
 
   .main {
     position: absolute;
-    left: 20vw;
+    left: 15vw;
     top: 8vh;
-    width: 55vw;
+    width: 45vw;
     min-height: 92%;
     overflow: auto;
   }
@@ -137,15 +138,27 @@ export default {
     background: transparent;  /* optional: just make scrollbar invisible */
   }
 
-  .rSidebar {
+  .rSidebarP {
     position: absolute;
     top: 8%;
-    right: 0px;
+    right: 15vw;
     width: 25vw;
     height: 92%;
     z-index: 8;
     transition: 250ms linear;
     text-align: center;
+  }
+
+  .rSidebarS {
+    position: fixed;
+    top: 8%;
+    right: 0vw;
+    width: 15vw;
+    min-height: 92%;
+    z-index: 8;
+    transition: 250ms linear;
+    text-align: center;
+    background: orange;
   }
 
   .navSerachInput {
@@ -177,13 +190,14 @@ export default {
   }
 
   .card {
-    width: 80%;
-    margin-left: 10%;
+    width: 90%;
     min-height: 20vh;
-    margin: 20px;
+    margin: 20px 5% 20px 5%;
     background: whitesmoke;
-    border-radius: 5px;
+    border-radius: 15px;
     text-align: left;
+    -webkit-animation: boxShadow 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	      animation: boxShadow 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   }
 
   .cardHeader {
@@ -296,4 +310,55 @@ export default {
     color: #2c395e;
     font-size: 14px;
   }
+
+
+
+  /*  Keyframes  */
+@-webkit-keyframes boxShadow {
+  0% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translateZ(100px);
+            transform: translateZ(100px);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.15);
+  }
+}
+@keyframes boxShadow {
+  0% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translateZ(100px);
+            transform: translateZ(100px);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* mobiles */
+
+@media screen and (max-width: 420px ) {
+  
+}
+
+@media screen and (max-width: 620px ) {
+  
+}
+
+@media screen and (max-width: 768px ) {
+  
+}
+
+@media screen and (max-width: 992px ) {
+  
+}
+
+@media screen and (max-width: 1100px ) {
+  
+}
+
 </style>

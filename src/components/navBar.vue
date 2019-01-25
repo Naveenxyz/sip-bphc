@@ -1,5 +1,6 @@
 <template>
-    <div class="top-nav elevation-1">
+  <div class="navBody">
+    <div class="top-nav elevation-3">
       <p class="logo" @click="$router.push('home')" style="flex: 2;color: white; cursor: pointer;font-family: Montserrat;align-content: center;font-size: 1.6rem;text-align: center;margin-top: 15px;font-weight: 500;word-spacing: 10px;letter-spacing: 1px;"> Social Net </p>
       <div class="searchBar" style="flex: 4;">
         <input type="text" name="search" class="navSerachInput" placeholder="Search" v-model="navSearch">
@@ -12,7 +13,10 @@
       <i class="bx bx-horizontal-center navIcon" @click="$router.push('collab')" style="flex: 1"></i>
       <i class="material-icons navIcon" @click="$router.push('showcase')" style="flex: 1">collections</i>
       <i class="material-icons navIcon" @click="logout" style="flex: 1">power_settings_new</i>
+      <i class="material-icons hiddenNavIcon" @click="toggleDisplay">menu</i>
     </div>
+    <div class="rightSideBar elevation-3" v-if="this.openRSb" ref="rightSidebar"></div>
+  </div>
 </template>
 
 <script>
@@ -21,7 +25,8 @@ export default {
   name: 'header',
   data () {
     return {
-      navSearch: ''
+      navSearch: '',
+      openRSb: false,
     }
   },
   methods : {
@@ -33,6 +38,9 @@ export default {
           vm.$router.push('login')
         }
       )
+    },
+    toggleDisplay () {
+      this.openRSb = !this.openRSb
     }
   }
 }
@@ -83,6 +91,23 @@ export default {
   .navIcon {
     color: #EEEFF7;
     font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .hiddenNavIcon {
+    flex: 1;
+    color: white;
+    display: none;
+  }
+
+  .rightSideBar {
+    position: fixed;
+    top: 8vh;
+    z-index: 999;
+    background: orange;
+    height: 92vh;
+    width: 30vw;
+    right: 0px;
     cursor: pointer;
   }
 
