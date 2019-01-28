@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <navBar />
-    <div class="lSidebar" ref="sidebar">
+    <div class="lSideBar" ref="sidebar">
       <div class="forums">
         <span style=""><h2> Forums <i class="bx bx-chevron-down" style="transform: scale(1.5, 1.5) translateX(10px);cursor: pointer;"></i> </h2>  </span>
       </div>
@@ -16,7 +16,7 @@
       <post />
       <div class="fCard elevation-1" :key="sPost.Id in posts" v-for="sPost in posts">
         <div class="fCardHeader">
-          <p class="fCardHeaderTitle">postedBy <strong style="margin-left: 20px;">{{sPost.postedBy}}</strong> </p>
+          <p class="fCardHeaderTitle">By <strong style="margin-left: 15px;">{{sPost.postedBy}}</strong> </p>
           <p class="fCardHeaderSub">{{sPost.subForum}}</p>
         </div>
         <div class="fCardBody">
@@ -43,7 +43,7 @@
         <div class="fcardComment"></div>
       </div>
     </div>
-
+    
     <div class="rSidebarP">
       <div class="card">
         <h2 class="cardHeader">Hackathon</h2>
@@ -89,7 +89,7 @@ export default {
           subForum: 'SubForum 2',
           upvotes: '101',
           downvotes: '101',
-          bodyText: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio?',
+          bodyText: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi om5ugtregvteg3gwv53g nis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum laborum odit aut quos modi omnis aspernatur, unde provident quis repellat error, ullam, itaque necessitatibus numquam eaque atque consequatur autem optio? ',
           bodyImg: ''
         }
       ]
@@ -112,7 +112,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .lSidebar {
+  .lSideBar {
     position: fixed;
     background: orange;
     top: 8%;
@@ -170,6 +170,7 @@ export default {
     color: #2c395e;
     height: 4vh;
     border-radius: 2px;
+    
   }
 
   .navSearchBtn {
@@ -342,11 +343,49 @@ export default {
 /* mobiles */
 
 @media screen and (max-width: 420px ) {
-  
+  .lSideBar{
+    display: none;
+  }
+  .rSidebarP{
+    display:none;
+  }
+  .rSidebarS{
+    display:none;
+  }
+  .main{
+    width:95vw;
+    left: 4vw;
+    
+  }
+  .fCard {
+    width: 90%;
+    margin-left: 5%;
+  }
+    
 }
 
 @media screen and (max-width: 620px ) {
-  
+  .lSideBar{
+    display: none;
+  }
+  .rSidebarP{
+    display:none;
+  }
+  .rSidebarS{
+    display:none;
+  }
+  .main{
+    width:100vw;
+    left: 1vw;
+  }
+  .userPostImg{
+    padding-left: 0vw;             
+  }
+  .fCardFooter{
+    height:11vh;
+
+  }
+   
 }
 
 @media screen and (max-width: 768px ) {

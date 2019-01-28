@@ -52,10 +52,10 @@
         </div>
         <div class="tags" style="display: flex;">
             <div style="flex: 1"></div>
-            <button class="tagBtn" style="flex:3 ;"> <i class="bx bx-code tagIcons" style=""></i> Code</button>
-            <button class="tagBtn" style="flex:3 ;"> <i class="bx bx-image-alt tagIcons"></i> Image</button>
-            <button class="tagBtn" style="flex:3 ;"> <i class="bx bx-video tagIcons"></i> Video</button>
-            <button class="tagBtn" style="flex:3 ;"> <i class="bx bx-file-blank tagIcons"></i> File</button>
+            <button class="tagBtn" style="flex:3 ;"> <i class="bx bx-code tagIcons" style=""></i> </button>
+            <button class="tagBtn" style="flex:3 ;"> <i class="bx bx-image-alt tagIcons"></i> </button>
+            <button class="tagBtn" style="flex:3 ;"> <i class="bx bx-video tagIcons"></i> </button>
+            <button class="tagBtn" style="flex:3 ;"> <i class="bx bx-file-blank tagIcons"></i> </button>
             <div style="flex: 1"></div>
         </div>
         <button ref="postSubmitBtn" class="postSubmitBtn">Submit</button>
@@ -240,7 +240,35 @@
         display: none;
         cursor: pointer;
     }
+@media screen and (max-width: 420px ) {
+   .userPostImg{
+    padding-left: 5vw;             
+    }
+    .postHeader p{
+        padding-left: 10px;
+    }
+    .userPost {
+        width: 90%;
+        margin-left: 5%;
+    }
+    
+}
 
+@media screen and (max-width: 620px ) {
+  
+}
+
+@media screen and (max-width: 768px ) {
+  
+}
+
+@media screen and (max-width: 992px ) {
+  
+}
+
+@media screen and (max-width: 1100px ) {
+  
+}
 </style>
 
 <script>
@@ -260,18 +288,28 @@ export default {
                 this.$refs.postBody.classList.remove('elevation-24')
                 this.$refs.postBody.style.width = '80%'
                 this.$refs.postBody.style.marginLeft = '10%' */
+                if (window.innerWidth <= '420') {
+                    this.$refs.postBody.style.width = '95%'
+                    this.$refs.postBody.style.marginLeft = '2.5%'
+                } else {
+                    this.$refs.postBody.style.width = '90%'
+                    this.$refs.postBody.style.marginLeft = '5%'
+                }
                 this.$refs.showForumSelection.style.display = 'block'
                 this.$refs.postSubmitBtn.style.display = 'block'
                 this.$refs.postBody.classList.add('elevation-24')
-                this.$refs.postBody.style.width = '90%'
-                this.$refs.postBody.style.marginLeft = '5%'
                 this.$refs.closeIcon.style.display = 'block'
             } else {
                 this.$refs.showForumSelection.style.display = 'block'
                 this.$refs.postSubmitBtn.style.display = 'block'
                 this.$refs.postBody.classList.add('elevation-24')
-                this.$refs.postBody.style.width = '90%'
-                this.$refs.postBody.style.marginLeft = '5%'
+                if (window.innerWidth <= '420') {
+                    this.$refs.postBody.style.width = '95%'
+                    this.$refs.postBody.style.marginLeft = '2.5%'
+                } else {
+                    this.$refs.postBody.style.width = '90%'
+                    this.$refs.postBody.style.marginLeft = '5%'
+                }
                 this.$refs.closeIcon.style.display = 'block'
             }
         },
@@ -280,8 +318,13 @@ export default {
             this.$refs.postSubmitBtn.style.display = 'none'
             this.textClickCounter = 0
             this.$refs.postBody.classList.remove('elevation-24')
-            this.$refs.postBody.style.width = '80%'
-            this.$refs.postBody.style.marginLeft = '10%'
+                if (window.innerWidth <= '420') {
+                    this.$refs.postBody.style.width = '90%'
+                    this.$refs.postBody.style.marginLeft = '5%'
+                } else {
+                    this.$refs.postBody.style.width = '80%'
+                    this.$refs.postBody.style.marginLeft = '10%'
+                }
             this.$refs.closeIcon.style.display = 'none'
         }
     },

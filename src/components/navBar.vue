@@ -6,7 +6,7 @@
         <input type="text" name="search" class="navSerachInput" placeholder="Search" v-model="navSearch">
         <button class="navSearchBtn"><i class="bx bx-search-alt navSearchIcon" style="font-size: 1.5rem;"></i></button>
       </div>
-      <div style="flex: 3"></div>
+      <div class="spacer" ></div>
       <i class="material-icons navIcon" @click="$router.push('profile')" style="flex: 1">person</i>
       <i class="bx bx-message-detail navIcon" @click="$router.push('messages')" style="flex: 1"></i>
       <i class="bx bx-code navIcon" @click="$router.push('code')" style="flex: 1"></i>
@@ -15,7 +15,38 @@
       <i class="material-icons navIcon" @click="logout" style="flex: 1">power_settings_new</i>
       <i class="material-icons hiddenNavIcon" @click="toggleDisplay">menu</i>
     </div>
-    <div class="rightSideBar elevation-3" v-if="this.openRSb" ref="rightSidebar"></div>
+    <div class="rightSideBar elevation-3" v-if="this.openRSb" ref="rightSidebar">
+      <span class="navIconMobCont">
+          <i class="material-icons navIconMob" @click="$router.push('profile')" style="flex: 1">person</i>
+          <p class="navIconMobText">Profile</p>
+      </span>
+      <br>
+      <span class="navIconMobCont">
+          <i class="bx bx-message-detail navIconMob" @click="$router.push('messages')" style="flex: 1"></i>
+          <p class="navIconMobText">Messages</p>
+      </span>
+      <br>
+      <span class="navIconMobCont">
+          <i class="bx bx-code navIconMob" @click="$router.push('code')" style="flex: 1"></i>
+          <p class="navIconMobText">Code</p>
+      </span>
+      <br>
+      <span class="navIconMobCont">
+          <i class="bx bx-horizontal-center navIconMob" @click="$router.push('collab')"style="flex: 1"></i>
+          <p class="navIconMobText">Collab</p>
+      </span>
+      <br>
+      <span class="navIconMobCont">
+          <i class="material-icons navIconMob" @click="$router.push('showcase')" style="flex: 1">collections</i>
+          <p class="navIconMobText">Showcase</p>
+      </span>
+      <br>
+      <span class="navIconMobCont">
+          <i class="material-icons navIconMob" @click="logout" style="flex: 1">power_settings_new</i>
+          <p class="navIconMobText">Logout</p>
+      </span>
+      <br>
+    </div>
   </div>
 </template>
 
@@ -76,6 +107,9 @@ export default {
     height: 4vh;
     border-radius: 2px;
   }
+  .spacer{
+    flex: 3;
+  }
 
   .navSearchBtn {
     all: unset;
@@ -106,9 +140,76 @@ export default {
     z-index: 999;
     background: orange;
     height: 92vh;
-    width: 30vw;
     right: 0px;
     cursor: pointer;
   }
+  /* mobiles */
+
+@media screen and (max-width: 420px ) {
+  .searchBar{
+   display: none;
+   flex: 0;
+  }
+  .logo{
+    text-align: left;
+  }
+  .spacer{
+    display: none;
+  }
+  .navIcon{
+    display: none;
+  }
+  .hiddenNavIcon{
+    display: block;
+    flex:2;
+    text-align: right;
+    padding-right: 30px;
+    transform: translateY(-2px);
+  }
+  .rightSideBar{
+    width: 70vw;
+    height: 100vh;  
+  }   
+
+  .navIconMob {
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+  }
+  .navIconMobText {
+    flex: 1;
+    text-align: left;
+    transform: translateY(8px);
+  }
+  
+  .navIconMobCont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .navIconMobCont:nth-of-type(1){
+    margin-top: 50px;
+  } 
+ 
+}
+
+@media screen and (max-width: 620px ) {
+  
+}
+
+@media screen and (max-width: 768px ) {
+  
+}
+
+@media screen and (max-width: 992px ) {
+  
+}
+
+@media screen and (max-width: 1100px ) {
+  
+}
 
 </style>
