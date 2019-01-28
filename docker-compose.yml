@@ -1,0 +1,16 @@
+version: "3"
+services:
+  product-service:
+    image: sipvue:v3 #you can use buld too like docker build /path/to/docker/file
+    volumes:
+      - /home/naveen/Desktop/sip-bphc:/app
+    ports:
+      - 5001:8080
+  #website:
+    #image: php:apache
+    #volumes:
+    #  - ./website:/var/www/html
+    #ports:
+    #  - 5000:80
+    #depends_on:
+      #- product-service
