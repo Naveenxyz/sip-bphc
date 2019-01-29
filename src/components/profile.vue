@@ -1,6 +1,6 @@
 <template>
     <div class="top">
-        <navBar />
+        <navBar style="width: 100vw;" />
         <div class="bar"></div>
         <div class="sub-bar">
             <div style="flex: 2"></div>
@@ -51,12 +51,15 @@ export default {
 }
 </script>
 <style scoped>
+.top {
+    width: 100vw;
+    height: 100vh;
+}
 .bar-text{
     color: orange;
     transform: translateY(1.5vw);
     text-align: center;
     font-size: 1vw;
-
 }
 .bar{
     position: relative;

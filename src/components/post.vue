@@ -208,13 +208,20 @@
     .tagBtn:hover {
         transform: translateY(-1px) scale(1.1, 1.1);
         transition: 0.1s;
+        cursor: pointer;
+    }
+
+    .tags{
+        text-align: center;
     }
 
     .tagIcons {
+        text-align: center;    
         margin-right: 20px;
         transform: scale(1.5, 1.5) translateY(0.5px);
         color: darkOrange;
         font-weight: 900;
+        padding-left: 14px;
     }
 
     .postSubmitBtn {
